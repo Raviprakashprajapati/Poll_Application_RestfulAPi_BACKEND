@@ -27,13 +27,14 @@ CREATE TABLE Questions (
 
 CREATE TABLE Options (
   optionId INT PRIMARY KEY,
-  questionId INT,
+  questionId INT,   
   optionText VARCHAR(255),
   FOREIGN KEY (questionId) REFERENCES Questions(questionId)
 );
 
 CREATE TABLE Users (
   userId INT PRIMARY KEY,
+
   username VARCHAR(255) NOT NULL
 );
 
@@ -42,6 +43,7 @@ CREATE TABLE UserResponses (
   userId INT,
   pollId INT,
   questionId INT,
+  
   chosenOptions TEXT,
   FOREIGN KEY (userId) REFERENCES Users(userId),
   FOREIGN KEY (pollId) REFERENCES Polls(pollId),
@@ -51,8 +53,9 @@ CREATE TABLE UserResponses (
 CREATE TABLE PollAnalytics (
   analyticsId INT PRIMARY KEY,
   pollId INT,
+
   totalVotes INT,
-  optionCounts JSON,
+  optionCounts VARCHAR(255),
   FOREIGN KEY (pollId) REFERENCES Polls(pollId)
 );
 
